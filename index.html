@@ -2,16 +2,15 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta Fauzi="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauzi - Fazea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>name - namo</title>
     
     <!-- Tailwind CSS CDN -->
-       <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <!-- Flowbite CDN -->
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     
@@ -320,31 +319,116 @@
             color: #e2e8f0;
         }
 
+        /* <CHANGE> Fixed header overflow issue */
         header {
-          width: 100vw; /* pastikan lebar fix dari awal */
-          overflow-x: hidden; /* cegah scroll horizontal */
-          box-sizing: border-box; /* agar padding tidak menambah lebar */
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+            transition: all 0.3s ease;
         }
-
 
         html {
-          overflow-y: scroll;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
         }
 
-        header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          z-index: 9999; /* header selalu paling atas */
-          background-color: rgba(15, 23, 42, 0.85); /* bg-slate-950/80 */
-          backdrop-filter: blur(8px);
-          border-bottom: 1px solid rgba(30, 41, 59, 0.6); /* border-slate-800 */
-          transition: all 0.3s ease;
+        /* <CHANGE> Improved responsive padding and spacing */
+        @media (max-width: 768px) {
+            .cursor, .cursor-follower {
+                display: none !important;
+            }
+
+            /* Hero Section */
+            #hero {
+                padding-top: 80px;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            /* Responsive font sizes */
+            h1 {
+                font-size: 1.875rem !important;
+            }
+
+            h2 {
+                font-size: 1.875rem !important;
+            }
+
+            h3 {
+                font-size: 1.25rem !important;
+            }
+
+            /* Responsive sections */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            /* Profile image smaller on mobile */
+            .profile-image {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            /* Grid to single column on mobile */
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Buttons responsive */
+            .btn-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-group a {
+                width: 100%;
+                text-align: center;
+            }
         }
 
+        @media (max-width: 640px) {
+            header nav {
+                padding: 0.75rem 0.5rem;
+            }
 
-        
+            .text-4xl {
+                font-size: 1.5rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.125rem !important;
+            }
+
+            .px-4 {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+
+        /* Desktop optimization */
+        @media (min-width: 1024px) {
+            header {
+                padding: 0 2rem;
+            }
+
+            section {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+
+            .max-w-6xl {
+                max-width: 80rem;
+            }
+        }
     </style>
     <link rel="icon" href="data:image/svg+xml,
   <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
@@ -358,21 +442,21 @@
     <div class="cursor-follower"></div>
 
     <!-- Header/Navigation -->
-    <header class="w-full fixed top-0 left-0 z-[9999] bg-slate-950/80 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+    <header class="w-full">
         <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold gradient-text">Fauzi</div>
+            <div class="text-xl sm:text-2xl font-bold gradient-text">name</div>
             
-            <div class="hidden md:flex gap-8">
-                <a href="#hero" class="hover:text-blue-400 transition">Home</a>
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-                <a href="#timeline" class="hover:text-blue-400 transition">Timeline</a>
-                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+            <div class="hidden md:flex gap-6 lg:gap-8">
+                <a href="#hero" class="text-sm lg:text-base hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="text-sm lg:text-base hover:text-blue-400 transition">About</a>
+                <a href="#skills" class="text-sm lg:text-base hover:text-blue-400 transition">Skills</a>
+                <a href="#projects" class="text-sm lg:text-base hover:text-blue-400 transition">Projects</a>
+                <a href="#timeline" class="text-sm lg:text-base hover:text-blue-400 transition">Timeline</a>
+                <a href="#contact" class="text-sm lg:text-base hover:text-blue-400 transition">Contact</a>
             </div>
 
-            <div class="flex gap-4 items-center">
-                <button id="darkModeToggle" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition">
+            <div class="flex gap-2 sm:gap-4 items-center">
+                <button id="darkModeToggle" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition text-sm sm:text-base">
                     <i class="fas fa-moon"></i>
                 </button>
                 <button class="md:hidden p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition" data-collapse-toggle="navbar-menu">
@@ -384,98 +468,95 @@
         <!-- Mobile Menu -->
         <div id="navbar-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
             <div class="px-4 py-4 space-y-2">
-                <a href="#hero" class="block py-2 hover:text-blue-400 transition">Home</a>
-                <a href="#about" class="block py-2 hover:text-blue-400 transition">About</a>
-                <a href="#skills" class="block py-2 hover:text-blue-400 transition">Skills</a>
-                <a href="#projects" class="block py-2 hover:text-blue-400 transition">Projects</a>
-                <a href="#timeline" class="block py-2 hover:text-blue-400 transition">Timeline</a>
-                <a href="#contact" class="block py-2 hover:text-blue-400 transition">Contact</a>
+                <a href="#hero" class="block py-2 text-sm hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="block py-2 text-sm hover:text-blue-400 transition">About</a>
+                <a href="#skills" class="block py-2 text-sm hover:text-blue-400 transition">Skills</a>
+                <a href="#projects" class="block py-2 text-sm hover:text-blue-400 transition">Projects</a>
+                <a href="#timeline" class="block py-2 text-sm hover:text-blue-400 transition">Timeline</a>
+                <a href="#contact" class="block py-2 text-sm hover:text-blue-400 transition">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-24 md:pt-32 px-4">
         <!-- Background Elements -->
         <div class="absolute inset-0 -z-10">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
         </div>
 
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto text-center w-full">
             <!-- Profile Image -->
-            <div class="mb-8 animate-fade-in-down">
-                <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1 animate-glow">
+            <div class="mb-6 sm:mb-8 animate-fade-in-down">
+                <div class="w-24 sm:w-32 h-24 sm:h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1 animate-glow profile-image">
                     <div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center overflow-hidden">
-                        <img class="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5Qc4MQUZtNiDxNQK7A00o9ggdoPPcuUqa_e4d5hKlhEJS3_BSqW5_FYFy6gR7ELVNSsmvZ0Z80lvipbZpANsSlZXuLFDLRmDwafZOVeurfY80HJAao9smnh_MPiOAQP92-Jbj8_uSWWO70HYSMkv1_tnKoWwumNZL1EM_kioy02Lb5o2Zpg9wxkzkFSI/s1600/IMG_20251020_181531.jpg" alt="profile-image" />
+                        <img class="w-full h-full object-cover" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5Qc4MQUZtNiDxNQK7A00o9ggdoPPcuUqa_e4d5hKlhEJS3_BSqW5_FYFy6gR7ELVNSsmvZ0Z80lvipbZpANsSlZXuLFDLRmDwafZOVeurfY80HJAao9smnh_MPiOAQP92-Jbj8_uSWWO70HYSMkv1_tnKoWwumNZL1EM_kioy02Lb5o2Zpg9wxkzkFSI/s1600/IMG_20251020_181531.jpg" alt="profile-image" />
                     </div>
                 </div>
             </div>
 
             <!-- Typing Animation -->
-            <div class="mb-15 h-12 animate-fade-in-up">
-                <p class="text-4xl md:text-7xl font-bold mb-6">Hi, I'm <span class="text-yellow-300 animate-simple-glow">Fauzi</span></p>
-                <p class="text-xl font-bold mb-6">
+            <div class="mb-8 sm:mb-12 animate-fade-in-up">
+                <p class="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">Hi, I'm <span class="text-yellow-300">name</span></p>
+                <p class="text-base sm:text-lg md:text-xl font-bold mb-4 sm:mb-6">
                     <span class="typing-container" id="typingText"></span>
                 </p>
             </div>
 
-            
-
             <!-- Description -->
-            <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.4s;">
+            <p class="text-sm sm:text-base md:text-lg text-slate-400 mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.4s;">
                 Passionate about open source, build automation, and reverse engineering. Building amazing things with code and creativity.
             </p>
 
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up" style="animation-delay: 0.6s;">
-                <a href="#projects" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition transform hover:scale-105">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 animate-fade-in-up btn-group" style="animation-delay: 0.6s;">
+                <a href="#projects" class="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition transform hover:scale-105 text-sm sm:text-base">
                     View My Work
                 </a>
-                <a href="#contact" class="px-8 py-3 border-2 border-blue-600 hover:bg-blue-600/10 rounded-lg font-semibold transition transform hover:scale-105">
+                <a href="#contact" class="px-6 sm:px-8 py-2 sm:py-3 border-2 border-blue-600 hover:bg-blue-600/10 rounded-lg font-semibold transition transform hover:scale-105 text-sm sm:text-base">
                     Get In Touch
                 </a>
             </div>
 
             <!-- Social Links -->
-            <div class="flex gap-6 justify-center animate-fade-in-up" style="animation-delay: 0.8s;">
-                <a target="_blank" href="#" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
-                    <i class="fab fa-github text-xl"></i>
+            <div class="flex gap-4 sm:gap-6 justify-center animate-fade-in-up" style="animation-delay: 0.8s;">
+                <a target="_blank" href="#" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
+                    <i class="fab fa-github text-lg sm:text-xl"></i>
                 </a>
-                <a href="https://instagram.com/vaazaea" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
-                    <i class="fab fa-instagram text-xl"></i>
+                <a href="https://instagram.com/vaazaea" class="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
+                    <i class="fab fa-instagram text-lg sm:text-xl"></i>
                 </a>
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <i class="fas fa-chevron-down text-2xl text-blue-400"></i>
+            <div class="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-xl sm:text-2xl text-blue-400"></i>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <section id="about" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">About Me</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center gradient-text" data-aos="fade-up">About Me</h2>
             
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                 <div data-aos="fade-right">
-                    <div class="w-full h-80 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center overflow-hidden">
-                      <img class="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5Qc4MQUZtNiDxNQK7A00o9ggdoPPcuUqa_e4d5hKlhEJS3_BSqW5_FYFy6gR7ELVNSsmvZ0Z80lvipbZpANsSlZXuLFDLRmDwafZOVeurfY80HJAao9smnh_MPiOAQP92-Jbj8_uSWWO70HYSMkv1_tnKoWwumNZL1EM_kioy02Lb5o2Zpg9wxkzkFSI/s1600/IMG_20251020_181531.jpg" alt="" />
-                        <!-- <i class="fas fa-user text-8xl text-blue-400/30"></i> -->
+                    <div class="w-full h-64 sm:h-80 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center overflow-hidden">
+                        <img class="w-full h-full object-cover" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5Qc4MQUZtNiDxNQK7A00o9ggdoPPcuUqa_e4d5hKlhEJS3_BSqW5_FYFy6gR7ELVNSsmvZ0Z80lvipbZpANsSlZXuLFDLRmDwafZOVeurfY80HJAao9smnh_MPiOAQP92-Jbj8_uSWWO70HYSMkv1_tnKoWwumNZL1EM_kioy02Lb5o2Zpg9wxkzkFSI/s1600/IMG_20251020_181531.jpg" alt="about-image" />
                     </div>
                 </div>
 
-                <div data-aos="fade-left" class="space-y-6">
-                    <p class="text-lg text-slate-300 leading-relaxed">
+                <div data-aos="fade-left" class="space-y-4 sm:space-y-6">
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
                         I'm a passionate developer with a deep interest in open source software, automation build, and reverse engineering. With years of experience in full-stack development, I love creating elegant solutions to complex problems.
                     </p>
-                    <p class="text-lg text-slate-300 leading-relaxed">
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
                         My journey in tech started with curiosity about how things work under the hood. This led me to explore automation build, security, and the fascinating world of reverse engineering.
                     </p>
-                    <div class="pt-4">
-                        <a href="https://drive.google.com" class="inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition transform hover:scale-105">
+                    <div class="pt-2 sm:pt-4">
+                        <a href="https://drive.google.com" class="inline-block px-4 sm:px-6 py-2 sm:py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition transform hover:scale-105 text-sm sm:text-base">
                             Download CV
                         </a>
                     </div>
@@ -485,17 +566,17 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Skill</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center gradient-text" data-aos="fade-up">Skill</h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
                 <!-- Programming Languages -->
                 <div data-aos="fade-up">
-                    <h3 class="text-2xl font-bold mb-6">Programming Languages</h3>
-                    <div class="space-y-4">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Programming Languages</h3>
+                    <div class="space-y-3 sm:space-y-4">
                         <div>
-                            <div class="flex justify-between mb-2">
+                            <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>No Skills</span>
                                 <span class="text-blue-400">100%</span>
                             </div>
@@ -503,42 +584,15 @@
                                 <div class="skill-progress-bar" style="width: 90%;"></div>
                             </div>
                         </div>
-<!--                         <div>
-                            <div class="flex justify-between mb-2">
-                                <span>JavaScript</span>
-                                <span class="text-blue-400">85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>C/C++</span>
-                                <span class="text-blue-400">80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Bash/Shell</span>
-                                <span class="text-blue-400">88%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 88%;"></div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
 
                 <!-- Technologies -->
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold mb-6">Technologies</h3>
-                    <div class="space-y-4">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Technologies</h3>
+                    <div class="space-y-3 sm:space-y-4">
                         <div>
-                            <div class="flex justify-between mb-2">
+                            <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>No Technologies</span>
                                 <span class="text-blue-400">100%</span>
                             </div>
@@ -546,228 +600,137 @@
                                 <div class="skill-progress-bar" style="width: 92%;"></div>
                             </div>
                         </div>
-                        <div>
-                           <!-- <div class="flex justify-between mb-2">
-                                <span>Docker & Kubernetes</span>
-                                <span class="text-blue-400">75%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Git & Version Control</span>
-                                <span class="text-blue-400">95%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span>Web Development</span>
-                                <span class="text-blue-400">87%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 87%;"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <section id="projects" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Featured Projects</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center gradient-text" data-aos="fade-up">Featured Projects</h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
                 <!-- Project 1 -->
                 <div class="project-card bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition" data-aos="fade-up">
-                    <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                        <i class="fas fa-code text-6xl text-white"></i>
+                    <div class="h-40 sm:h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
+                        <i class="fas fa-code text-4xl sm:text-6xl text-white"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">TikTok Downloader + Scrape</h3>
-                        <p class="text-slate-400 mb-4"><b style="color: Red">TikTok Downloader + Scrape</b> is a web and API project designed to download TikTok videos without watermarks and automatically scrape data from TikTok. <br /> <br />
-                    This project is built with a focus on <b>speed, efficiency, and easy integration</b> across various platforms such as websites, mobile applications, and content analytics systems.
-</p>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-2xl font-bold mb-2">TikTok Downloader + Scrape</h3>
+                        <p class="text-sm sm:text-base text-slate-400 mb-4"><b style="color: Red">TikTok Downloader + Scrape</b> is a web and API project designed to download TikTok videos without watermarks and automatically scrape data from TikTok. <br /> <br />
+                        This project is built with a focus on <b>speed, efficiency, and easy integration</b> across various platforms such as websites, mobile applications, and content analytics systems.
+                        </p>
                         <div class="flex gap-2 mb-4 flex-wrap">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">NodeJs</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Api</span>
-                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Open Source</span>
+                            <span class="px-2 sm:px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs sm:text-sm">JavaScript</span>
+                            <span class="px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs sm:text-sm">NodeJs</span>
+                            <span class="px-2 sm:px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs sm:text-sm">Api</span>
+                            <span class="px-2 sm:px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-xs sm:text-sm">Open Source</span>
                         </div>
-                        <a href="#" class="inline-block text-blue-400 hover:text-blue-300 transition">
+                        <a href="#" class="inline-block text-blue-400 hover:text-blue-300 transition text-sm sm:text-base">
                             View Project <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-               <!--  <div class="project-card bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-6xl text-blue-400/30"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Security Analyzer</h3>
-                        <p class="text-slate-400 mb-4">Advanced security analysis tool for reverse engineering and vulnerability assessment.</p>
-                        <div class="flex gap-2 mb-4 flex-wrap">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">C++</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Security</span>
-                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Reverse Eng</span>
-                        </div>
-                        <a href="#" class="inline-block text-blue-400 hover:text-blue-300 transition">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 
-                <div class="project-card bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                        <i class="fas fa-server text-6xl text-blue-400/30"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Linux Kernel Module</h3>
-                        <p class="text-slate-400 mb-4">Custom Linux kernel module for system monitoring and performance optimization.</p>
-                        <div class="flex gap-2 mb-4 flex-wrap">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">C</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Linux</span>
-                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Kernel</span>
-                        </div>
-                        <a href="#" class="inline-block text-blue-400 hover:text-blue-300 transition">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 
-                <div class="project-card bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                        <i class="fas fa-globe text-6xl text-blue-400/30"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Web Framework</h3>
-                        <p class="text-slate-400 mb-4">Modern web framework built with JavaScript for creating fast and scalable applications.</p>
-                        <div class="flex gap-2 mb-4 flex-wrap">
-                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">Web</span>
-                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm">Framework</span>
-                        </div>
-                        <a href="#" class="inline-block text-blue-400 hover:text-blue-300 transition">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
 
     <!-- Timeline Section -->
-    <section id="timeline" class="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="timeline" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">My Journey</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center gradient-text" data-aos="fade-up">My Journey</h2>
             
             <div class="relative">
                 <!-- Timeline Line -->
                 <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-600"></div>
 
                 <!-- Timeline Items -->
-                <div class="space-y-12">
+                <div class="space-y-8 sm:space-y-12">
                     <!-- Item 1 -->
                     <div class="timeline-item md:flex md:gap-8" data-aos="fade-up" style="animation-delay: 0s;">
                         <div class="md:w-1/2 md:text-right">
-                            <h3 class="text-2xl font-bold mb-2">No Timeline</h3>
-                            <p class="text-slate-400">2019</p>
+                            <h3 class="text-lg sm:text-2xl font-bold mb-2">No Timeline</h3>
+                            <p class="text-slate-400 text-sm sm:text-base">2019</p>
                         </div>
                         <div class="hidden md:block relative">
                             <div class="timeline-dot"></div>
                         </div>
-                        <div class="md:w-1/2 mt-4 md:mt-0">
-                            <p class="text-slate-300">Timeline</p>
+                        <div class="md:w-1/2 mt-2 md:mt-0">
+                            <p class="text-slate-300 text-sm sm:text-base">Timeline</p>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <section id="contact" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Get In Touch</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center gradient-text" data-aos="fade-up">Get In Touch</h2>
             
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                 <!-- Contact Info -->
-                <div data-aos="fade-right" class="space-y-8">
+                <div data-aos="fade-right" class="space-y-6 sm:space-y-8">
                     <div>
-                        <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
-                        <p class="text-slate-400 mb-6">I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Let's Connect</h3>
+                        <p class="text-slate-400 mb-4 sm:mb-6 text-sm sm:text-base">I'm always interested in hearing about new projects and opportunities. Feel free to reach out!</p>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="flex gap-4 items-start">
-                            <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-blue-400"></i>
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="flex gap-3 sm:gap-4 items-start">
+                            <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-blue-400 text-sm sm:text-base"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">Email</h4>
-                                <p class="text-slate-400">contact@fazea.xyz</p>
+                                <h4 class="font-bold mb-1 text-sm sm:text-base">Email</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm">contact@namo.xyz</p>
                             </div>
                         </div>
 
-                        <div class="flex gap-4 items-start">
-                            <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-blue-400"></i>
+                        <div class="flex gap-3 sm:gap-4 items-start">
+                            <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-blue-400 text-sm sm:text-base"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">Location</h4>
-                                <p class="text-slate-400">Indonesia</p>
+                                <h4 class="font-bold mb-1 text-sm sm:text-base">Location</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm">Indonesia</p>
                             </div>
                         </div>
-
                     </div>
 
                     <!-- Social Links -->
-                    <div class="pt-4">
-                        <h4 class="font-bold mb-4">Follow Me</h4>
-                        <div class="flex gap-4">
-                            <a href="#" class="w-12 h-12 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
-                                <i class="fab fa-github text-xl"></i>
+                    <div class="pt-2 sm:pt-4">
+                        <h4 class="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Me</h4>
+                        <div class="flex gap-3 sm:gap-4">
+                            <a href="#" class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
+                                <i class="fab fa-github text-lg sm:text-xl"></i>
                             </a>
-                            <a href="https://instagram.com/vaazaea" class="w-12 h-12 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
-                                <i class="fab fa-instagram text-xl"></i>
+                            <a href="https://instagram.com/vaazaea" class="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition transform hover:scale-110">
+                                <i class="fab fa-instagram text-lg sm:text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8 px-4 sm:px-6 lg:px-8">
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
-
-
-            <div class="border-t border-slate-800 pt-8 text-center text-slate-400">
-                <p>&copy; 2025 Fauzi - Fazea. All rights reserved. | Built with <i class="fas fa-heart text-red-500"></i> and passion</p>
+            <div class="border-t border-slate-800 pt-6 sm:pt-8 text-center text-slate-400 text-xs sm:text-sm">
+                <p>&copy; 2025 name - namo. All rights reserved. | Built with <i class="fas fa-heart text-red-500"></i> and passion</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
- <script>
+    <script>
         // Initialize AOS
         AOS.init({
             duration: 1000,
