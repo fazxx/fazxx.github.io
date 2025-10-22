@@ -1,4 +1,4 @@
-<script>
+
         // Initialize AOS
         AOS.init({
             duration: 1000,
@@ -123,4 +123,3 @@
                 navbarMenu.classList.add('hidden');
             });
         });
-    </script>
